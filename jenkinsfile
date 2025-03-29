@@ -12,7 +12,7 @@ pipeline{
       } 
       stage('Test'){
         steps{
-            echo 'Testing the Project'
+            echo 'Testing   the Project'
             bat 'mvn test'
         }
       }
@@ -22,5 +22,11 @@ pipeline{
             bat 'mvn deploy'
         }
       } 
+      stage('Delivery'){
+        steps{
+            echo 'Delivering the Project'
+            bat './scripts/deliver.sh'
+        }
+      }
     }
 }
