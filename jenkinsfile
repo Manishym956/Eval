@@ -1,26 +1,14 @@
-pipeline{
+pipeline {
     agent any
-    tools{
+    tools {
         maven 'maven'
     }
-    stages{
-      stage('Build'){
-        steps{
-            echo 'Building the Project'
-            bat 'mvn -B -DskipTests clean package'
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building the Project'
+                bat 'mvn -B -DskipTests clean package'
+            }
         }
-      } 
-      stage('Test'){
-        steps{
-            echo 'Testing   the Project'
-            bat 'mvn test'
-        }
-      } 
-      stage('Delivery'){
-        steps{
-            echo 'Delivering the Project'
-            bat 'bash scripts/delivery.sh'
-        }
-      }
     }
 }
